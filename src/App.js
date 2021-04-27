@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import RoomInfo from './RoomInfo.js';
+import MessageList from './MessageList.js';
+import MessageInput from './MessageInput.js';
 
-function App() {
+const App = () => {
+  const [name, setName] = useState("");
+  const [room, setRoom] = useState("KDOC");
+  const [messages, setMessages] = useState([{ text: "hello", author: "Big Joe" }, { text: "world", author: "Lug" }]);
+
+  const handleRoomChange = () => "";
+  const handleNameChange = () => "";
+  const listen = () => messages;
+  const addMessage = (text) => setMessages([...messages, { text, author: "UserA" }]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <RoomInfo roomName={room} />
+      <MessageList messages={listen()} />
+      <MessageInput addMessage={addMessage} />
     </div>
   );
 }
