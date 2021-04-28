@@ -10,7 +10,7 @@ const MessageList = ({ messages }) => {
                     messages.map(message =>
                         <ChatMessage
                             message={message}
-                            key={message.text}
+                            key={message.id}
                         />
                     )
             }
