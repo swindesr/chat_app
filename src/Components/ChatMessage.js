@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ChatMessage = ({ message: { senderId, body, timestamp } }) => {
+const ChatMessage = ({ message: { author, body, timestamp } }) => {
     const day = 86400000;
 
     const olderThanOneDay = timestamp => timestamp + day < Date.now()
@@ -13,7 +13,7 @@ const ChatMessage = ({ message: { senderId, body, timestamp } }) => {
 
     return (
         <div className="chatMessage">
-            <p><b>{senderId}</b> {formatDate(timestamp)}</p>
+            <p><b>{author}</b> {formatDate(timestamp)}</p>
             <p>{body}</p>
         </div>
     );

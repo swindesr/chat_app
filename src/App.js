@@ -1,26 +1,34 @@
-import { useState } from 'react';
-import './App.css';
-import RoomInfo from './RoomInfo.js';
-import MessageList from './MessageList.js';
-import MessageInput from './MessageInput.js';
-import useChat from './useChat';
+import React, { useState } from 'react';
+import ChatRoom from './Components/ChatRoom.js';
+import SocialPanel from './Components/SocialPanel.js';
+import Login from './Components/Login.js';
+import useUser from './Hooks/useUser.js';
+import useUsers from './Hooks/useUsers.js';
+import { SocketContext, socket } from './Contexts/socket';
+import { RoomContext } from './Contexts/room';
 
 const App = () => {
-  const [user, setUser] = useState("Sam");
-  const [room, setRoom] = useState("KDOC");
-  // const [messages, setMessages] = useState([
-  //   { text: "hello", author: "Big Joe", timestamp: 1619496676263, id: uuidv4() },
-  //   { text: "world", author: "Lug", timestamp: 1619496678019, id: uuidv4() }
-  // ]);
-  const { messages, sendMessage } = useChat(room);
+  const [user, login] = useUser();
+  const [users] = useUsers();
+  const roomHook = useState(null);
 
   return (
-    <div className="wrapper">
-      <RoomInfo roomName={room} />
-      <MessageList messages={messages} />
-      <MessageInput sendMessage={sendMessage} user={user} />
-    </div>
+    <RoomContext.Provider value={roomHook}>
+      <SocketContext.Provider value={socket}>
+        <div id="wrapper">
+          {
+            user
+              ? (
+                <>
+                  <SocialPanel users={users} />
+                  <ChatRoom user={user} />
+                </>
+              )
+              : <Login login={login} />}
+        </div>
+      </SocketContext.Provider>
+    </RoomContext.Provider>
   );
-}
+};
 
 export default App;

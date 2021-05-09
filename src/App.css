@@ -1,10 +1,55 @@
+#wrapper {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+#chatContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1 70%;
+}
+
+#socialContainer {
+  width: 200px;
+  border-right: 1px solid #bbb;
+}
+
+#usersContainer {
+  padding: 20px;
+  border-bottom: 1px solid #bbb;
+}
+
+#roomsContainer {
+  padding: 20px;
+}
+
+#loginContainer {
+}
+
+#noRoomSplash {
+  display: flex;
+  height: 100%;
+  background-color: #333;
+  color: #eee;
+}
+
+.centered {
+  align-self: center;
+  margin: auto;
+}
+
 .roomInfo {
   padding: 20px;
   background: #eee;
 }
 
 .messageList {
+  display: flex;
+  flex: 1;
+  flex-direction: column-reverse;
   padding: 20px;
+  overflow: auto;
 }
 
 .messageInput {
@@ -13,4 +58,46 @@
 
 .chatMessage {
   padding: 10px 0px;
+}
+
+.socialPanelList {
+  list-style-type: none;
+  padding-inline-start: 0px;
+}
+
+.socialPanelList > li {
+  margin-bottom: 7px;
+  cursor: pointer;
+}
+
+.socialPanelList > li:hover {
+  text-decoration: underline;
+}
+
+.socialPanelLabel {
+  font-weight: bold;
+}
+
+.online::before{
+  content: '';
+  display: inline-block;
+  width: .5rem;
+  height: .5rem;
+  margin-right: .25rem;
+  -moz-border-radius: .25rem;
+  -webkit-border-radius: .25rem;
+  border-radius: .25rem;
+  background-color: rgb(91, 235, 91);
+}
+
+.offline::before{
+  content: '';
+  display: inline-block;
+  width: .5rem;
+  height: .5rem;
+  margin-right: .25rem;
+  -moz-border-radius: .25rem;
+  -webkit-border-radius: .25rem;
+  border-radius: .25rem;
+  background-color: rgb(200, 200, 200);
 }
