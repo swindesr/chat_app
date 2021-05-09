@@ -1,5 +1,5 @@
 ## Overview
-The aptly named 'chat_app' is a real-time chat application. As more features are added, and 
+The aptly named 'chat_app' is a real-time chat application. For now, there is not very much to say about it. It is under heavy development.
 
 ## Current Features
 * Session storage
